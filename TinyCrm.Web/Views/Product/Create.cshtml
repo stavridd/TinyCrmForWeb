@@ -1,0 +1,36 @@
+﻿@model TinyCrm.Web.Models.CreateProductViewModel
+
+    <form method="post" action="@Url.Action("create", "product")">
+
+        <div class="form-group">
+            <label for="@Html.IdFor(c => c.CreateOptions.Name)">Name</label>
+            @Html.TextBoxFor(c => c.CreateOptions.Name, new { @class = "form-control" })         
+        </div>
+
+        <div class="form-group">
+            <label for="@Html.IdFor(c => c.CreateOptions.Price)">Price</label>
+            @Html.TextBoxFor(c => c.CreateOptions.Price, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            <label for="@Html.IdFor(c => c.CreateOptions.ProductCategory)">Product Category</label>
+            @Html.TextBoxFor(c => c.CreateOptions.ProductCategory, new { @class = "form-control" })
+        </div>
+
+        <select class="browser-default custom-select" id="@Html.IdFor(c => c.CreateOptions.ProductCategory)">
+            <option selected>Choose the product category</option>      
+            <option value=1>Cameras</option>
+            <option value=2>Laptops</option>
+            <option value=3>Computers</option>
+            <option value=4>Smartphones</option>
+            <option value=5>Televisions</option>
+        </select>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+        @if (!string.IsNullOrWhiteSpace(Model?.ErrorText)) {
+            <div class="alert alert-danger" role="alert">
+                @Model?.ErrorText
+            </div>
+        }
+    </form>

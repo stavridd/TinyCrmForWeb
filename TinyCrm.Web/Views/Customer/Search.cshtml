@@ -1,0 +1,44 @@
+﻿@model TinyCrm.Web.Models.SearchCustomerViewModel
+
+<h1>Search Product</h1>
+
+
+<form method="post" action="@Url.Action("search", "customer")">
+
+    <div class="form-group">
+        <label for="@Html.IdFor(c => c.SearchOptions.VatNumber)">Name</label>
+        @Html.TextBoxFor(c => c.SearchOptions.VatNumber, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label for="@Html.IdFor(c => c.SearchOptions.Email)">Price</label>
+        @Html.TextBoxFor(c => c.SearchOptions.Email, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label for="@Html.IdFor(c => c.SearchOptions.CreatedFrom)">Price</label>
+        @Html.TextBoxFor(c => c.SearchOptions.CreatedFrom, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label for="@Html.IdFor(c => c.SearchOptions.CreatedTo)">Price</label>
+        @Html.TextBoxFor(c => c.SearchOptions.CreatedTo, new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+    @if (!string.IsNullOrWhiteSpace(Model?.ErrorText)) {
+        <div class="alert alert-danger" role="alert">
+            @Model?.ErrorText
+        </div>
+    }
+</form>
+
+
+
+@if (!string.IsNullOrWhiteSpace(Model?.ErrorText)) {
+    <div class="alert alert-danger" role="alert">
+        @Model?.ErrorText
+    </div>
+}
+
